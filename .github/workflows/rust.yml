@@ -1,0 +1,35 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build
+      run: cargo build --verbose
+
+    - name: test
+      run: cargo test --verbose
+
+    - name: test no-default-features
+      run: cargo test --no-default-features
+
+    - name: test libm
+      run: cargo test --no-default-features --features=libm
+
+    - name: test all-features
+      run: cargo test --all-features
+
+    - name: clippy
+      run: cargo clippy --all-features

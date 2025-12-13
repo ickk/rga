@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = ["rga"]
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

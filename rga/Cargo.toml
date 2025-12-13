@@ -1,0 +1,25 @@
+[package]
+name = "rga"
+version = "0.0.0"
+edition = "2021"
+authors = ["ickk <crates@ickk.io>"]
+license = "MIT OR Apache-2.0 OR Zlib"
+readme = "README.md"
+include = ["src/", "LICENSE-APACHE", "LICENSE-MIT", "LICENSE-ZLIB"]
+
+[dependencies]
+libm = { version = "0.2.0", optional = true }
+approx = { version = "0.5", optional = true }
+
+[features]
+default = ["std", "approx"]
+std = ["_math"]
+libm = ["dep:libm", "_math"]
+approx = ["dep:approx"]
+
+# internal feature
+_math = []
+
+[dev-dependencies]
+approx = "0.5"
+paste = "1.0.15"
