@@ -1,3 +1,5 @@
+#[cfg(feature = "_math")]
+use crate::algebra::operators::WeightNorm;
 use {
   crate::algebra::{
     operators::{Unitize, WeightNormSquared},
@@ -36,8 +38,16 @@ impl Unitize for Line {}
 impl_from_unit!(impl From<Unit<Line>> for Line);
 
 impl WeightNormSquared for Line {
+  #[inline]
   fn weight_norm_squared(self) -> Antiscalar {
     self.0.weight_norm_squared()
+  }
+}
+#[cfg(feature = "_math")]
+impl WeightNorm for Line {
+  #[inline]
+  fn weight_norm(self) -> Antiscalar {
+    self.0.weight_norm()
   }
 }
 

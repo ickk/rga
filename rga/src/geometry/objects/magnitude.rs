@@ -1,8 +1,6 @@
-#[cfg(feature = "_math")]
-use crate::algebra::operators::WeightNorm;
 use {
   crate::algebra::{
-    operators::{DotProduct, Unitize, WeightNormSquared},
+    operators::{DotProduct, Unitize, WeightNorm, WeightNormSquared},
     values::{unit::impl_from_unit, Antiscalar, DualNumber, Scalar, Unit},
   },
   ::core::ops::Mul,
@@ -17,12 +15,17 @@ impl Unitize for Magnitude {}
 impl_from_unit!(impl From<Unit<Magnitude>> for Magnitude);
 
 impl WeightNormSquared for Magnitude {
+  #[inline]
   fn weight_norm_squared(self) -> Antiscalar {
     self.0.weight_norm_squared()
   }
 }
-#[cfg(feature = "_math")]
-impl WeightNorm for Magnitude {}
+impl WeightNorm for Magnitude {
+  #[inline]
+  fn weight_norm(self) -> Antiscalar {
+    self.0.weight_norm()
+  }
+}
 
 impl<Rhs> DotProduct<Rhs> for Magnitude
 where
