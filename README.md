@@ -22,9 +22,9 @@ License
 -------
 
 This crate is licensed under any of the
-[Apache license, Version 2.0](./LICENSE-APACHE),
+[Apache license, Version 2.0](./rga/LICENSE-APACHE),
 or the
-[MIT license](./LICENSE-MIT),
+[MIT license](./rga/LICENSE-MIT),
 or the
-[Zlib license](./LICENSE-ZLIB)
+[Zlib license](./rga/LICENSE-ZLIB)
 at your option.
